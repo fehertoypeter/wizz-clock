@@ -59,7 +59,7 @@ function calculateHourAndMinuteDigits(hourHand, bigHandValue) {
   if (hourDigit > 12) hourDigit = hourDigit % 12 || 12;
   if (hourDigit === 1) hourDigit = 12;
 
-  minuteDigit = bigHandValue - hourHand * 5 + 1;
+  minuteDigit = bigHandValue - hourHand * 5;
   if (minuteDigit < 0) minuteDigit += 60;
   if (minuteDigit >= 60) minuteDigit = minuteDigit % 60;
 
