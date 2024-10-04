@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Óra Kitalálós Játék</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="gameStats">
+        <p>Games Played: <span id="gameCount">0</span></p>
+        <p>Correct Answers: <span id="correctCount">0</span></p>
+        <p>Incorrect Answers: <span id="incorrectCount">0</span></p>
+      </div>
+
+      <div id="clock-dock">
+        <!-- Random PNG képek egymáson helyezkednek el -->
+        <img id="random-clock" src="" alt="" />
+        <img id="hour-hand" src="" alt="" />
+        <img id="clock-main" src="img/clock-main.png" alt="" />
+        <img id="clockImage" src="" alt="" />
+        <img id="hourHandImage" src="" alt="" />
+        <img id="big-hand" src="img/bighand.png" alt="Big Hand" />
+      </div>
+      <input type="number" id="hourInput" placeholder="Hány órát mutat?" />
+      <button id="startButton">Start</button>
+      <button id="checkButton">Check</button>
+      <div id="correctAnswer" style="display: none">
+        A helyes válasz: <span id="correctValue"></span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
