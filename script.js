@@ -25,10 +25,22 @@ function startGame() {
   const clockImage = `img/${numberA}-${numberB}.png`;
   document.getElementById("random-clock").src = clockImage;
 
-  // Random hour hand image selection (e.g., m1, m2, etc.)
+  // Kisorsoljuk a számot 1-12 között
   const hourHand = getRandomNumber(1, 12);
-  const hourHandImage = `img/m${hourHand}.png`;
-  document.getElementById("hour-hand").src = hourHandImage;
+
+  // Az m12.png képet használjuk mindig
+  const hourHandImage = `img/m12.png`;
+  const imgElement = document.getElementById("hour-hand");
+
+  // Beállítjuk a kép forrását az m12.png-re
+  imgElement.src = hourHandImage;
+
+  // Szám alapján kiszámítjuk a forgatás mértékét (1-12 -> 30 fokos lépések)
+  const rotationDegree = hourHand * 30; // 30 fokkal forgat minden egyes órához
+
+  // Alkalmazzuk a forgatást a CSS transform property segítségével
+  imgElement.style.transition = "transform 0.5s ease"; // Animáció beállítása
+  imgElement.style.transform = `rotate(${rotationDegree}deg)`; // Forgatás beállítása
 
   // Random big hand rotation
   const randomRotation = getRandomRotation();
@@ -117,4 +129,12 @@ function getRandomNumber(min, max) {
 // Helper function to generate a random rotation that is a multiple of 6
 function getRandomRotation() {
   return Math.floor(Math.random() * 60) * 6; // 0-59 * 6 fokonként
+}
+function addToInput(num) {
+  const inputField = document.getElementById("hourInput");
+  inputField.value += num;
+}
+
+function clearInput() {
+  document.getElementById("hourInput").value = "";
 }

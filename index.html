@@ -7,29 +7,106 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="game-container">
-      <div id="gameStats">
-        <p>Games Played: <span id="gameCount">0</span></p>
-        <p>Correct Answers: <span id="correctCount">0</span></p>
-        <p>Incorrect Answers: <span id="incorrectCount">0</span></p>
+    <div id="container">
+      <div class="toggle-container">
+        <div class="timer">Time left: <span id="timer">9:00</span></div>
+        <div id="timer-container"></div>
+        <span class="info-icon" id="info-icon">ℹ️</span>
+        <!-- Információs ikon -->
       </div>
 
-      <div id="clock-dock">
-        <!-- Random PNG képek egymáson helyezkednek el -->
-        <img id="random-clock" src="" alt="" />
-        <img id="hour-hand" src="" alt="" />
-        <img id="clock-main" src="img/clock-main.png" alt="" />
-        <img id="clockImage" src="" alt="" />
-        <img id="hourHandImage" src="" alt="" />
-        <img id="big-hand" src="img/bighand.png" alt="Big Hand" />
+      <div id="rules-container" class="rules-container" style="display: none">
+        <button id="close-rules" class="close-button">x</button>
+        <!-- Bezáró gomb -->
+        <div id="game-setup">
+          <div>
+            <label for="game-duration">Game Duration (minutes):</label>
+            <input
+              type="number"
+              id="game-duration"
+              value="9"
+              min="1"
+              style="width: 50px"
+            />
+            <button onclick="setGameDuration()">Set</button>
+          </div>
+          <div>
+            <label for="rule-duration">Rule Duration (tasks):</label>
+            <input
+              type="number"
+              id="rule-duration"
+              value="3"
+              min="1"
+              style="width: 50px"
+            />
+            <button onclick="setRuleDuration()">Set</button>
+            <div class="switch-container">
+              <label for="color-feedback">Color feedback: </label>
+              <input type="checkbox" id="color-feedback" checked />
+            </div>
+          </div>
+          <div>
+            <label for="total-tasks">Number of Tasks:</label>
+            <select id="total-tasks">
+              <option value="6">6</option>
+              <option value="40">40</option>
+              <option value="60">60</option>
+            </select>
+            <button onclick="setTotalTasks()">Set</button>
+          </div>
+        </div>
       </div>
-      <input type="number" id="hourInput" placeholder="Hány órát mutat?" />
-      <button id="startButton">Start</button>
-      <button id="checkButton">Check</button>
-      <div id="correctAnswer" style="display: none">
-        A helyes válasz: <span id="correctValue"></span>
+
+      <div class="game-container">
+        <div id="gameStats">
+          <p>Games Played: <span id="gameCount">0</span></p>
+          <p>Correct Answers: <span id="correctCount">0</span></p>
+          <p>Incorrect Answers: <span id="incorrectCount">0</span></p>
+        </div>
+
+        <div id="clock-dock">
+          <!-- Random PNG képek egymáson helyezkednek el -->
+          <img id="random-clock" class="smooth" src="img/6-6.png" alt="" />
+          <img id="hour-hand" class="smooth" src="img/m12.png" alt="" />
+          <img id="clock-main" class="smooth" src="img/clock-main.png" alt="" />
+
+          <img
+            id="big-hand"
+            class="smooth"
+            src="img/bighand.png"
+            alt="Big Hand"
+          />
+        </div>
+        <input type="number" id="hourInput" placeholder="Hány órát mutat?" />
+
+        <div id="correctAnswer" style="display: none">
+          A helyes válasz: <span id="correctValue"></span>
+        </div>
+
+        <div id="buttons" class="buttons">
+          <button onclick="addToInput(1)">1</button>
+          <button onclick="addToInput(2)">2</button>
+          <button onclick="addToInput(3)">3</button>
+          <button onclick="addToInput(4)">4</button>
+          <button onclick="addToInput(5)">5</button>
+          <button onclick="addToInput(6)">6</button>
+          <button onclick="addToInput(7)">7</button>
+          <button onclick="addToInput(8)">8</button>
+          <button onclick="addToInput(9)">9</button>
+
+          <button class="clear" onclick="clearInput()">C</button>
+          <button onclick="addToInput(0)">0</button>
+          <button id="checkButton" class="submit">S</button>
+        </div>
+        <div class="main-buttons">
+          <button id="startButton">Start</button>
+        </div>
+
+        <div class="result" id="result"></div>
       </div>
     </div>
+
+    <div id="game-container"></div>
 
     <script src="script.js"></script>
   </body>
